@@ -1,6 +1,6 @@
 #!/bin/bash
 
-setxkbmap -option compose:caps ;
+setxkbmap -option caps:escape ;
 cbatticon &
 nm-applet &
-
+pasystray &

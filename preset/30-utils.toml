@@ -1,1 +1,2 @@
-packages = ["scrot", "feh", "fd", "bat", "exa", "fzf"]
+packages = ["scrot", "feh", "fzf", "evince", "imagemagick", "ffmpeg", "dos2unix", "rtorrent", "ripgrep-all", "arch-install-scripts", "less", "man-db"]
+aur_packages = ["alma-git"]

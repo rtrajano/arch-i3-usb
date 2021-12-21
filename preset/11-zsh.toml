@@ -1,8 +1,23 @@
-packages = ["zsh", "zsh-completions", "curl", "wget"]
-
+packages = ["zsh", "zsh-completions", "curl"]
+aur_packages = ["oh-my-zsh-git", "asdf-vm"]
 script = """
-cd /home/${ALMA_USER}/
 chsh -s /usr/bin/zsh ${ALMA_USER}
-sudo -u ${ALMA_USER} sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sed 's/exec zsh -l//g')"
-cd /
+cp /usr/share/oh-my-zsh/zshrc /home/${ALMA_USER}/.zshrc
+chown ${ALMA_USER}:${ALMA_USER} /home/${ALMA_USER}/.zshrc
+curl -o /home/${ALMA_USER}/.colemak_dh_ansi_us.xmodmap https://raw.githubusercontent.com/ColemakMods/mod-dh/master/xmodmap/colemak_dh_ansi_us.xmodmap
+sed -i '/^keycode 66/s/BackSpace BackSpace BackSpace BackSpace/Escape Escape Escape Escape/' /home/${ALMA_USER}/.colemak_dh_ansi_us.xmodmap
+chown ${ALMA_USER}:${ALMA_USER} /home/${ALMA_USER}/.colemak_dh_ansi_us.xmodmap
+xmodmap -pke > /home/${ALMA_USER}/.qwerty.xmodmap
+chown ${ALMA_USER}:${ALMA_USER} /home/${ALMA_USER}/.qwerty.xmodmap
+cat << EOF >> /home/${ALMA_USER}/.zshrc
+alias l='ls -Arth'
+alias ll='ls -lArth'
+alias qqq='xmodmap -pke | grep -q "keycode  52 = x X" && xmodmap ~/.qwerty.xmodmap || xmodmap ~/.colemak_dh_ansi_us.xmodmap'
+alias wake='wol -i 192.168.1.1 AA:AA:AA:AA:AA:AA'
+export EDITOR='vi'
+export VISUAL='vi'
+export LESS=-R
+. /opt/asdf-vm/asdf.sh
+EOF
+sed -i "s/plugins=(git)/plugins=(git archlinux fzf ripgrep asdf)/" /home/${ALMA_USER}/.zshrc
 """

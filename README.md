@@ -72,21 +72,13 @@ $ ALMA_USER="test" TIMEZONE="Europe/Madrid" sudo -E alma create -e --presets ./a
 ```
 
 The `preset/` directory contains a basic installation which will fit on an
-8 GiB USB stick. If you have a larger disk it is highly recommended to
-use the additional preset files in the `additional/` directory:
-
-```bash
-$ cp -rf additional/* preset/
-```
-
-The additional presets include many more useful utilities, and adds the
-i3status-rust bar.
+6 GiB USB stick.
 
 ## What is included
 ### User
 The user given by `ALMA_USER` is created with a home directory and XDG directories, and given passwordless sudo access.
 
-The root password is also set during installation.
+The root password is also set during installation but locked from login, only sudo/su access.
 
 ### Microcode
 
@@ -108,17 +100,13 @@ This preset uses Xorg, not Wayland. A Wayland installation could be created by m
 
 ### PulseAudio
 
-PulseAudio is installed. 
+PulseAudio and bluez are installed for bluetooth headsets (use `bluetoothctl` to connect and pair devices).
 
-In the additional presets, bluez is installed for bluetooth headsets (use `bluetoothctl` to connect and pair devices).
-
-pavucontrol can be launched with Meta+v to control the volumes and output devices.
+pasystray is started at i3 boot to control volume from the systray.
 
 ### Virtual Terminal
 
 alacritty is the default terminal emulator and can be launched with Meta+Enter.
-
-Urxvt is also installed in the additional presets.
 
 ### Display Manager
 
@@ -130,22 +118,21 @@ i3status is also installed as a status bar, a sample configuration is included i
 
 ### Text editors
 
-vim and gvim are installed, along with the MiniVim configuration.
-
-emacs and nano are also installed in the additional presets.
+vim is installed with syntax highligting (vim-polyglot), neovim-lspconfig-git, nvim-cmp, LuaSnip, pyright, autocompletion, and a couple other plugins.
 
 ### Shell
 
-fish is the default shell.
+zsh is installed, along with the oh-my-zsh configuration and git, archlinux, and fzf plugins enabled.
 
-zsh is installed, along with the oh-my-zsh configuration.
+asdf-vm is installed for management of multiple versions of languages.
+
+Colemak-dh keymap is loaded into the user's home dir and can be activated with the alias `qqq`.
 
 ### Web browsers
 
-Firefox is installed.
+Firefox is installed along with ublock origin and dark reader.
 
-In the additional presets, chromium is also installed, and
-lynx and elinks are installed for use on the CLI.
+elinks is installed for use on the CLI.
 
 ### File management
 
@@ -157,21 +144,17 @@ gparted and ntfs-3g are installed for working with NTFS partitions and resizing 
 
 ### SSH
 
-The openssh client is installed.
+The openssh client is installed and nftables enabled to allow traffic. Tunnels can also be created with wireguard-tools.
 
 ### git
 
-git is installed.
+git is installed along with vim-fugitive.
 
 ### Multimedia
 
-In the additional presets, mpd is installed for playing music,
-along with the ncmpcpp and Ario frontends.
-The default music directory is set to ~/Music.
-
-mpv is installed in the additional presets.
+vlc is installed. Media can be pulled from rtorrent or yt-dlp.
 
 ### KeepassXC
 
-In the additional presets, KeepassXC is installed for password databases.
+KeepassXC is installed for password databases.
 

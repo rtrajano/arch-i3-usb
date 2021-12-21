@@ -1,0 +1,9 @@
+packages = ["neovim", "python-pynvim", "python-setuptools", "python-pip", "pyright"]
+aur_packages = ["neovim-plug-git", "neovim-symlinks", "neovim-lspconfig-git"]
+shared_directories = ["nvim_config"]
+script = """
+install -g ${ALMA_USER} -o ${ALMA_USER} -m 644 -D -T /shared_dirs/nvim_config/init.vim /home/${ALMA_USER}/.config/nvim/init.vim
+chown -R ${ALMA_USER}:${ALMA_USER} /home/${ALMA_USER}/.config/nvim/
+sudo -u ${ALMA_USER} nvim --headless +PlugInstall +qall
+"""
+environment_variables = ["ALMA_USER"]

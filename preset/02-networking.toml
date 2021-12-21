@@ -1,4 +1,5 @@
-packages = ["dhcpcd", "networkmanager", "nm-connection-editor", "network-manager-applet", "dhclient", "iw", "macchanger", "posix-user-portability", "wpa_supplicant", "dialog", "netctl"]
+packages = ["dhcpcd", "networkmanager", "nm-connection-editor", "network-manager-applet", "dhclient", "iw", "macchanger", "posix-user-portability", "wpa_supplicant", "dialog", "netctl", "nftables", "wireguard-tools", "wol", "networkmanager-openvpn"]
 script = """
 systemctl enable NetworkManager.service
+systemctl enable nftables.service
 """

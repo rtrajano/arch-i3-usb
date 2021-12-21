@@ -1,9 +1,7 @@
 packages = ["cbatticon"]
+aur_packages = ["systemd-boot-pacman-hook"]
 shared_directories = ["startup_config"]
 script = """
-cp /shared_dirs/startup_config/xprofile /home/${ALMA_USER}/.xprofile
-chown ${ALMA_USER} /home/${ALMA_USER}/.xprofile
-chgrp ${ALMA_USER} /home/${ALMA_USER}/.xprofile
+install -g ${ALMA_USER} -o ${ALMA_USER} -m 644 -D -T /shared_dirs/startup_config/xprofile /home/${ALMA_USER}/.xprofile
 """
 environment_variables = ["ALMA_USER"]
-

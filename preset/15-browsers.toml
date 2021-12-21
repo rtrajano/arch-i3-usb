@@ -1,1 +1,1 @@
-packages = ["firefox"]
+packages = ["firefox", "firefox-ublock-origin", "firefox-dark-reader", "elinks"]
