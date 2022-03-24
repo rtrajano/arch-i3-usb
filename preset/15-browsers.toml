@@ -1,1 +1,2 @@
-packages = ["firefox", "firefox-ublock-origin", "firefox-dark-reader", "elinks"]
+packages = ["elinks"]
+aur_packages = ["librewolf-bin", "librewolf-extension-dark-reader"]
