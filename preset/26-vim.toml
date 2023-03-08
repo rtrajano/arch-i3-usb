@@ -1,5 +1,5 @@
 packages = ["neovim", "python-pynvim", "python-setuptools", "python-pip", "pyright"]
-aur_packages = ["neovim-plug-git", "neovim-symlinks", "neovim-lspconfig-git"]
+aur_packages = ["neovim-plug-git", "neovim-symlinks", "neovim-lspconfig-git", "nerd-fonts-meta"]
 shared_directories = ["nvim_config"]
 script = """
 install -g ${ALMA_USER} -o ${ALMA_USER} -m 644 -D -T /shared_dirs/nvim_config/init.vim /home/${ALMA_USER}/.config/nvim/init.vim
