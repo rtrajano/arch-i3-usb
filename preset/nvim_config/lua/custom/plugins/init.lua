@@ -12,33 +12,16 @@ local plugins = {
       require "custom.plugins.lspconfig"
     end,
   },
-  ["andersevenrud/cmp-tmux"] = {},
-  ["hrsh7th/nvim-cmp"] = {
-    override_options = {
-      sources = {
-        { name = "luasnip" },
-        { name = "nvim_lsp" },
-        {
-          name = "buffer",
-          option = {
-            get_bufnrs = function()
-              return vim.api.nvim_list_bufs()
-            end
-      },
-        },
-        { name = "nvim_lua" },
-        { name = "path" },
-        {
-          name = 'tmux',
-          option = {
-            all_panes = true,
-            label = '[tmux]',
-            trigger_characters = { '.' },
-            trigger_characters_ft = {} -- { filetype = { '.' } }
-          },
-        },
-      }
-    }
+  ["andersevenrud/cmp-tmux"] = { after = "nvim-cmp" },
+  ["williamboman/mason.nvim"] = { override_options = overrides.mason },
+  ["nvim-tree/nvim-tree.lua"] = { override_options = overrides.nvimtree },
+  ["hrsh7th/nvim-cmp"] = { override_options = overrides.cmp },
+  ["nvim-treesitter/nvim-treesitter"] = { override_options = overrides.treesitter },
+  ["jose-elias-alvarez/null-ls.nvim"] = {
+    after = "nvim-lspconfig",
+    config = function()
+      require "custom.plugins.null-ls"
+    end,
   },
   ["easymotion/vim-easymotion"] = {
     vim.cmd([[
@@ -55,6 +38,9 @@ local plugins = {
       let argwrap_tail_comma = 1
     ]])
   },
+
+  -- remove plugins
+  ["folke/which-key.nvim"] = false,
 }
 
 return plugins
