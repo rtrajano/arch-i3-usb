@@ -24,19 +24,19 @@ local plugins = {
     end,
   },
   ["easymotion/vim-easymotion"] = {
-    vim.cmd([[
+    vim.cmd [[
       let g:EasyMotion_do_mapping = 0 " Disable default mappings
       let g:EasyMotion_smartcase = 1
       nmap s <Plug>(easymotion-overwin-f)
-    ]])
+    ]],
   },
   ["tpope/vim-repeat"] = {},
   ["tpope/vim-surround"] = {},
   ["tpope/vim-unimpaired"] = {},
   ["FooSoft/vim-argwrap"] = {
-    vim.cmd([[
+    vim.cmd [[
       let argwrap_tail_comma = 1
-    ]])
+    ]],
   },
 
   -- remove plugins

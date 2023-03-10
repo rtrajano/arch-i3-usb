@@ -72,17 +72,17 @@ M.cmp = {
       option = {
         get_bufnrs = function()
           return vim.api.nvim_list_bufs()
-        end
-  },
+        end,
+      },
     },
     { name = "nvim_lua" },
     { name = "path" },
     {
-      name = 'tmux',
+      name = "tmux",
       option = {
         all_panes = true,
-        label = '[tmux]',
-        trigger_characters = { '.' },
+        label = "[tmux]",
+        trigger_characters = { "." },
         trigger_characters_ft = {}, -- { filetype = { '.' } }
       },
     },
